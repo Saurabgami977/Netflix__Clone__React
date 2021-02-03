@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import './Banner.css';
 import axios from './axios';
-import request from './Requests';
+import requests from './Requests';
 
 function Banner() {
 
@@ -10,9 +10,18 @@ function Banner() {
 
     useEffect(() => {
         async function fetchData() {
-            const request = await axios.get(request.fetchTrending)
+            const request = await axios.get(requests.fetchNetflixOriginals);
+            setMovie(
+                request.data.results[
+                Math.floor(Math.random() * request.data.results.length - 1)
+                ]
+            );
+            return request;
         }
+        fetchData();
     }, [])
+
+    console.log(movie)
 
     const truncate = (string, n) => {
         return string?.length > n ? string.substr(0, n - 1) + '...' : string
@@ -20,13 +29,13 @@ function Banner() {
 
     return (
         <header className="banner" style={{
-            backgroundImage: `url('https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_flag.svg/1200px-Black_flag.svg.png')`,
+            backgroundImage: `url('https://image.tmdb.org/t/p/original/${movie?.backdrop_path}')`,
             backgroundSize: 'cover',
             backgroundPosition: 'center center'
         }}>
             <div className="banner__contents">
                 <h1 className="banner__title">
-                    Movie Name
+                    {movie.name}
                 </h1>
                 <div className="banner__buttons">
                     <button className="banner__button">Play</button>
@@ -34,7 +43,7 @@ function Banner() {
                 </div>
                 <h1 className="banner__description">
                     {
-                        truncate('descriptionThis is a test descriptionThis is a test descriptionThis is a test descri a test descriptionThis is a test descri a test descriptionThis is a test descri a test descriptionThis is a test descri a test descriptionThis is a test descri', 150)
+                        truncate(`${movie.overview}`, 150)
                     }
                 </h1>
 

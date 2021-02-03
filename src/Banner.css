@@ -36,6 +36,7 @@
 }
 
 .banner__button {
+  text-align: center;
   cursor: pointer;
   border: none;
   color: white;
