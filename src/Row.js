@@ -38,6 +38,7 @@ function Row({ title, fetchUrl, isLargeRow = false }) {
                     const urlParams = new URLSearchParams(new URL(url).search);
                     setTrailerUrl(urlParams.get('v'));
                 }).catch(error => {
+                    //playing 'summer of 69' if current url is not valid
                     setTrailerUrl('eFjjO_lhf9c');
                 })
         }

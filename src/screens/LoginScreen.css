@@ -1,6 +1,6 @@
 .loginScreen {
   position: relative;
-  height: 100%;
+  min-height: 150vh;
   background: url("https://assets.nflxext.com/ffe/siteui/vlv3/757ab38f-5d08-40bc-b3eb-eaba63ed8203/93c34f94-56c8-40a7-8b2e-b4aac6427977/GB-en-20210125-popsignuptwoweeks-perspective_alpha_website_medium.jpg")
     center no-repeat;
   background-size: cover;
@@ -31,7 +31,7 @@
 .loginScreen__gradient {
   width: 100%;
   z-index: 1;
-  height: 100vh;
+  height: 150vh;
   background: rgba(0, 0, 0, 0.4);
   background-image: linear-gradient(
     to top,
@@ -43,7 +43,7 @@
 
 .loginScreen__body {
   position: absolute;
-  top: 30%;
+  top: 20%;
   left: 0;
   right: 0;
   margin-left: auto;
